@@ -1,2 +1,2 @@
-# Logistic_dev
-This is a branch for developers only
+# DWI-Logistics
+This is an logistic web app
