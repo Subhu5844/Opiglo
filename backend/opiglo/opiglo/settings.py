@@ -41,7 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'opiglo_dev',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
+
 ]
+
+# JWT Authentication settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,7 +62,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
+
+
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Default: Use database for sessions
+SESSION_COOKIE_NAME = 'sessionid'  # Ensure the default cookie name is not altered
+
+
+
 
 ROOT_URLCONF = 'opiglo.urls'
 
@@ -85,6 +105,9 @@ DATABASES = {
         'PASSWORD':'root',
         'HOST':'localhost',
         'PORT':3306,
+        # 'OPTIONS': {
+        #     'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        # }
     }
 }
 
@@ -129,3 +152,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sbhuyan7008@gmail.com'
+EMAIL_HOST_PASSWORD = 'ndep ufug hfts qiuh'
+DEFAULT_FROM_EMAIL = 'sbhuyan7008@gmail.com'
+
+
+
+
